@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel – Veggie Catalogue</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="admin-header">
+        <h1>Administrace produktů</h1>
+        <button id="logout-button">Logout</button>
+    </div>
+    <div class="admin-container">
+        <div class="admin-form">
+    <form id="product-form">
+        <input type="hidden" id="product-id">
+
+        <label for="name">Název produktu:</label>
+        <input type="text" id="name" required>
+
+        <label for="price">Cena:</label>
+        <input type="number" id="price" required>
+
+        <label for="discount">Sleva (%):</label>
+        <input type="number" id="discount">
+
+        <label for="category">Kategorie:</label>
+        <select id="category" required>
+            <!-- Možnosti kategorií budou naplněny dynamicky pomocí JavaScriptu -->
+        </select>
+
+        <label for="stock">Sklad:</label>
+        <input type="number" id="stock" required>
+
+        <label for="country">Země původu:</label>
+        <input type="text" id="country">
+
+        <label for="expiry_date">Datum expirace:</label>
+        <input type="date" id="expiry_date">
+
+        <button type="submit">Uložit produkt</button>
+    </form>
+    
+        </div>
+
+        <div class="product-list">
+            <h2>Seznam produktů</h2>
+    <table id="product-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Název</th>
+                <th>Cena</th>
+                <th>Sleva</th>
+                <th>Kategorie</th>
+                <th>Akce</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Sem se načtou produkty -->
+        </tbody>
+    </table>
+    <div id="pagination"></div>
+        </div>
+    </div>
+    <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,271 @@
+/* 🌿 Základní nastavení */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #F5F1E8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+/* 🌿 Efekt načtení stránky */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 🌿 Hlavní nadpis */
+h1 {
+    color: #2D6A4F;
+    font-size: 28px;
+    margin-top: 20px;
+    animation: slideIn 1s ease-in-out;
+}
+
+/* 🌿 Efekt pro nadpis */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 🌿 Formulář */
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    animation: popUp 0.8s ease-in-out;
+}
+
+/* 🌿 Efekt pop-up pro formulář */
+@keyframes popUp {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* 🌿 Efekty pro sekce při scrollování */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-in-out;
+}
+
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 🌿 Popisky */
+label {
+    font-weight: bold;
+    color: #555;
+}
+
+/* 🌿 Vstupní pole */
+input {
+    padding: 10px;
+    border: 1px solid #CCC;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 🌿 Efekt při kliknutí na input */
+input:focus {
+    border-color: #2D6A4F;
+    box-shadow: 0px 0px 5px rgba(45, 106, 79, 0.5);
+    transform: scale(1.02);
+    outline: none;
+}
+
+/* 🌿 Tlačítko */
+button {
+    padding: 12px;
+    background-color: #2D6A4F;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 🌿 Efekt hover pro tlačítko */
+button:hover {
+    background-color: #1B4332;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(27, 67, 50, 0.3);
+}
+
+/* 🌿 Efekt kliknutí na tlačítko */
+button:active {
+    transform: scale(0.95);
+}
+
+/* 🌿 Responsivita */
+@media (max-width: 400px) {
+    form {
+        width: 90%;
+    }
+}
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 1rem;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1rem;
+    margin: 1rem;
+    width: 200px;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.product-image {
+    width: 100%;
+    height: 150px;
+    background-color: #ccc;
+    margin-bottom: 1rem;
+}
+
+.sale-off {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 2px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: 1;
+}
+
+.price {
+    font-weight: bold;
+}
+
+.discount {
+    color: red;
+}
+
+.main-code {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.origin {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.stock {
+    font-size: 0.8rem;
+    color: green;
+}
+/* 🌿 Kontejner pro administraci a seznam */
+.admin-container {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 🌿 Sekce formuláře */
+.admin-form {
+    flex: 1;
+    max-width: 400px;
+}
+
+/* 🌿 Sekce seznamu */
+.product-list {
+    flex: 2;
+    overflow-x: auto;
+}
+
+/* 🌿 Responsivita pro menší obrazovky */
+@media (max-width: 768px) {
+    .admin-container {
+        flex-direction: column;
+    }
+
+    .admin-form,
+    .product-list {
+        max-width: 100%;
+    }
+}
+/* 🌿 Sticky sekce formuláře */
+.admin-form {
+    flex: 1;
+    max-width: 400px;
+    position: sticky;
+    top: 20px; /* Vzdálenost od horní části stránky */
+    height: fit-content; /* Zachová velikost formuláře */
+    background-color: #fff; /* Zajistí, že formulář nebude průhledný */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Jemný stín pro zvýraznění */
+    padding: 20px;
+    border-radius: 8px;
+}
+/* 🌿 Nadpis + tlačítko Logout */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#logout-button {
+    background-color: #4CAF50; /* Zelené tlačítko (podle tématu) */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+#logout-button:hover {
+    background-color: #45a049; /* Tmavší zelená při hoveru */
+}
