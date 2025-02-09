@@ -26,14 +26,44 @@ body {
     }
 }
 
-/* 🌿 Hlavní nadpis */
+/* 🌿 Hlavička (header) */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: #F5F1E8;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+#search{
+    flex-grow: 1; /* Zajistí, že vyhledávání zabere dostupný prostor */
+    max-width: 400px; /* Maximální šířka */
+    padding: 8px;
+    border: 1px solid #CCC;
+    border-radius: 8px;
+    font-size: 16px;
+}
+/* 🌿 Nadpis */
 h1 {
     color: #2D6A4F;
     font-size: 28px;
-    margin-top: 20px;
     animation: slideIn 1s ease-in-out;
 }
-
+.header-left h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #2D6A4F;
+}
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Mezera mezi textem "PRODUCTS" a vyhledávacím polem */
+    flex: 1; /* Zabírá dostupný prostor, aby tlačítka byla zarovnaná doprava */
+}
 /* 🌿 Efekt pro nadpis */
 @keyframes slideIn {
     from {
@@ -44,6 +74,18 @@ h1 {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* 🌿 Kontejner pro tlačítka */
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+}
+
+/* 🌿 Zajištění, aby login button byl vpravo */
+#login-button {
+    margin-left: auto;
 }
 
 /* 🌿 Formulář */
@@ -70,25 +112,16 @@ form {
         opacity: 1;
     }
 }
-
-/* 🌿 Efekty pro sekce při scrollování */
-.scroll-reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease-in-out;
+#category{
+    font-size: 16px;
+    padding: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(204, 204, 204);
+    border-image: initial;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
 }
-
-.scroll-reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* 🌿 Popisky */
-label {
-    font-weight: bold;
-    color: #555;
-}
-
 /* 🌿 Vstupní pole */
 input {
     padding: 10px;
@@ -130,17 +163,7 @@ button:active {
     transform: scale(0.95);
 }
 
-/* 🌿 Responsivita */
-@media (max-width: 400px) {
-    form {
-        width: 90%;
-    }
-}
-header {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
+/* 🌿 Seznam produktů */
 #product-list {
     display: flex;
     flex-wrap: wrap;
@@ -148,6 +171,7 @@ header {
     padding: 1rem;
 }
 
+/* 🌿 Karta produktu */
 .product-card {
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -189,21 +213,12 @@ header {
     color: red;
 }
 
-.main-code {
+.main-code, .origin, .stock {
     font-size: 0.8rem;
     color: #666;
 }
 
-.origin {
-    font-size: 0.8rem;
-    color: #666;
-}
-
-.stock {
-    font-size: 0.8rem;
-    color: green;
-}
-/* 🌿 Kontejner pro administraci a seznam */
+/* 🌿 Admin sekce */
 .admin-container {
     display: flex;
     gap: 20px;
@@ -212,42 +227,18 @@ header {
     padding: 20px;
 }
 
-/* 🌿 Sekce formuláře */
-.admin-form {
-    flex: 1;
-    max-width: 400px;
-}
-
-/* 🌿 Sekce seznamu */
-.product-list {
-    flex: 2;
-    overflow-x: auto;
-}
-
-/* 🌿 Responsivita pro menší obrazovky */
-@media (max-width: 768px) {
-    .admin-container {
-        flex-direction: column;
-    }
-
-    .admin-form,
-    .product-list {
-        max-width: 100%;
-    }
-}
-/* 🌿 Sticky sekce formuláře */
 .admin-form {
     flex: 1;
     max-width: 400px;
     position: sticky;
-    top: 20px; /* Vzdálenost od horní části stránky */
-    height: fit-content; /* Zachová velikost formuláře */
-    background-color: #fff; /* Zajistí, že formulář nebude průhledný */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Jemný stín pro zvýraznění */
+    top: 20px;
+    height: fit-content;
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
     border-radius: 8px;
 }
-/* 🌿 Nadpis + tlačítko Logout */
+
 .admin-header {
     display: flex;
     justify-content: space-between;
@@ -256,7 +247,7 @@ header {
 }
 
 #logout-button {
-    background-color: #4CAF50; /* Zelené tlačítko (podle tématu) */
+    background-color: #4CAF50;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -267,5 +258,23 @@ header {
 }
 
 #logout-button:hover {
-    background-color: #45a049; /* Tmavší zelená při hoveru */
+    background-color: #45a049;
+}
+
+/* 🌿 Responsivita */
+@media (max-width: 768px) {
+    .admin-container {
+        flex-direction: column;
+    }
+
+    .admin-form,
+    .product-list {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    form {
+        width: 90%;
+    }
 }
